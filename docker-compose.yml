@@ -1,0 +1,43 @@
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+    container_name: rag-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "127.0.0.1:9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    mem_limit: 2g
+  api:
+    build: .
+    container_name: rag-hybrid-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the data and indexes from your WSL host into the container
+      - ./data:/app/data:ro
+      - ./indexes:/app/indexes:ro
+    environment:
+      # Optional: Force PyTorch to use CUDA if it ever gets confused
+      - ES_HOST=elasticsearch
+      - CUDA_VISIBLE_DEVICES=0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    depends_on:
+      - elasticsearch
+
+volumes:
+  es-data:

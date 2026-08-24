@@ -1,0 +1,14 @@
+# Dependencies are added here incrementally, phase by phase —
+# only after being installed and verified working together.
+# Each entry is pinned to the exact version tested against.
+#pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cu130
+
+pyyaml==6.0.3
+elasticsearch==8.15.1
+torch==2.13.0
+transformers==4.52.0
+accelerate==1.7.0
+sentence-transformers==4.1.0
+faiss-cpu==1.11.0
+fastapi==0.141.1
+uvicorn==0.52.4
