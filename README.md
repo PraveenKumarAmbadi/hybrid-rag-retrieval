@@ -263,7 +263,7 @@ FAISS is a synchronous C++ library, and PyTorch's core operations run on a synch
 
 This is a personal portfolio project built to demonstrate production-grade RAG architecture, but I highly value feedback from the community. 
 
-- **Found a bug or have a suggestion?** Please [open an issue](https://github.com/praveenKumarAmbadi/hybrid-rag-retrieval). 
+- **Found a bug or have a suggestion?** Please [open an issue](https://github.com/praveenKumarAmbadi/hybrid-rag-retrieval/issues). 
 - **Want to contribute?** Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 - **Questions or networking?** Feel free to reach out to me on [LinkedIn](https://www.linkedin.com/in/ambadi-praveen-3b6779191/) or via [email](mailto:ambadipraveenkumar490@gmail.com).
 
